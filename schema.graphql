@@ -1,3 +1,27 @@
-type user {
-  
+type User {
+ id: ID!
+  name: String!
+  email: String!
+
+  meetups: [Meetup!]! 
+} 
+
+type Meetup {
+  id: ID!
+  title: String!
+  description: String!
+  user: User!
+}
+
+type Query {
+  meetups: [Meetup!]!
+}
+
+input NewMeetup {
+  name: String!
+  description: String!
+}
+
+type Mutation {
+  createMeetup(newMeetup: NewMeetup!): Meetup!
 }
